@@ -1,7 +1,8 @@
-﻿using System.Reflection;
+﻿using BoneLib.Notifications;
+using System.Reflection;
 
 namespace BONEUtils.Developer {
-    public static class Utilities {
+    public static class DevUtils {
         public static void LoadAllValid<T>(Assembly assembly, Action<Type> runOnValid) {
             string fullName = assembly.FullName;
             if (fullName != null && fullName.Contains("System")) {
@@ -36,6 +37,17 @@ namespace BONEUtils.Developer {
                 return null;
             }
             return Assembly.Load(array);
+        }
+        internal static Notification Notification {
+            get; private set;
+        } = new();
+        public static void Notify(string message, float timer = 0.3f, string title = "BONE Utils") {
+            Notification = new();
+            Notification.ShowTitleOnPopup = true;
+            Notification.Title = title;
+            Notification.Message = message;
+            Notification.PopupLength = timer;
+            Notifier.Send(Notification);
         }
     }
 }
