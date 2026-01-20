@@ -34,7 +34,7 @@ namespace BONEUtils.Utils.AssetWarehouseUtil {
 
         private static void GenerateCrateDataTask() {
             try {
-                Crates = new(AssetWarehouseUtility.MaxResults);
+                Crates = new();
                 foreach (var crate in AssetWarehouse.Instance.GetCrates().ToList().FilterAndCleanCrates()) {
                     if (Crates.Contains(crate))
                         continue;

@@ -21,7 +21,6 @@ namespace BONEUtils.Utils.AssetWarehouseUtil {
         public static bool IncludeTitles { get; set; } = true;
         public static bool CaseSensitive { get; set; } = false;
         public const int MaxElements = 10;
-        public const int MaxResults = 32;
         public static string SearchQuery;
 
         private void BoneMenuCreator() {
