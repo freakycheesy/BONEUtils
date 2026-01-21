@@ -8,9 +8,11 @@ namespace BONEUtils
 {
     public class Core : MelonMod
     {
+        public static MelonPreferences_Category Preferences;
         public static Core Instance;
         public override void OnInitializeMelon()
         {
+            Preferences = MelonPreferences.CreateCategory("BONE-UTILS");
             LoggerInstance.Msg("Loaded BONE-Utils.");
             Instance = this;
             UICore.Init();
