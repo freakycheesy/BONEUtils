@@ -14,9 +14,9 @@ namespace BONEUtils.Developer {
             get; private set;
         }
         internal static void Init() {
-            RootPage = Page.Root.CreatePage("BONE Utils", Color.blue);
-            UtilitiesPage = RootPage.CreatePage("Utilities", Color.cyan);
-            DangerousPage = RootPage.CreatePage("Dangerous", Color.red);
+            RootPage = Page.Root.CreatePage("BONE Utils", OverrideColor.lightBlue);
+            UtilitiesPage = RootPage.CreatePage("Utilities", OverrideColor.lightBlue);
+            DangerousPage = RootPage.CreatePage("Dangerous", OverrideColor.red);
             SettingsPage = RootPage.CreatePage("Settings", Color.yellow);
         }
     }

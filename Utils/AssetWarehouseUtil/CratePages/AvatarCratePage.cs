@@ -5,7 +5,7 @@ using Il2CppSLZ.Bonelab;
 using Il2CppSLZ.Marrow.Warehouse;
 using UnityEngine;
 namespace BONEUtils.Utils.AssetWarehouseUtil.CratePages {
-    public class AvatarCratePage : CratePage {
+    public class AvatarCratePage : ScannablePage {
         public AvatarCratePage(BoneLib.BoneMenu.Page palletPage, Crate crate) : base(palletPage, crate) {
             Developer.Logger.Log("Avatar");
         }
@@ -14,10 +14,10 @@ namespace BONEUtils.Utils.AssetWarehouseUtil.CratePages {
             CreateListener += OnCreate;
         }
 
-        private static void OnCreate(BoneLib.BoneMenu.Page page, Crate crate) {
+        private static void OnCreate(BoneLib.BoneMenu.Page page, Scannable crate) {
             if (crate is not AvatarCrate)
                 return;
-            CratePages.Add(new AvatarCratePage(page, crate));
+            Instances.Add(new AvatarCratePage(page, (Crate)crate));
         }
 
         public override void OnPageCreated() {
@@ -25,7 +25,7 @@ namespace BONEUtils.Utils.AssetWarehouseUtil.CratePages {
         }
 
         private void DirectSpawn() {
-            Player.RigManager.SwapAvatarCrate(Crate.Barcode);
+            Player.RigManager.SwapAvatarCrate(Scannable.Barcode);
         }
     }
 }

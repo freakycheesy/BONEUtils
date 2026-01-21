@@ -5,7 +5,7 @@ using Il2CppSLZ.Bonelab;
 using Il2CppSLZ.Marrow.Warehouse;
 using UnityEngine;
 namespace BONEUtils.Utils.AssetWarehouseUtil.CratePages {
-    public class SpawnableCratePage : CratePage {
+    public class SpawnableCratePage : ScannablePage {
         public SpawnableCratePage(BoneLib.BoneMenu.Page palletPage, Crate crate) : base(palletPage, crate) {
             Developer.Logger.Log("Spawnable");
         }
@@ -13,10 +13,10 @@ namespace BONEUtils.Utils.AssetWarehouseUtil.CratePages {
             CreateListener += OnCreate;
         }
 
-        private static void OnCreate(BoneLib.BoneMenu.Page page, Crate crate) {
+        private static void OnCreate(BoneLib.BoneMenu.Page page, Scannable crate) {
             if (crate is not SpawnableCrate)
                 return;
-            CratePages.Add(new SpawnableCratePage(page, crate));
+            Instances.Add(new SpawnableCratePage(page, (Crate)crate));
         }
 
         public override void OnPageCreated() {
@@ -26,14 +26,14 @@ namespace BONEUtils.Utils.AssetWarehouseUtil.CratePages {
 
         private void DirectSpawn() {
             var position = Player.Head.transform.position + (Player.Head.transform.forward * 5);
-            SpawnableCrateReference crateRef = new(Crate.Barcode);
+            SpawnableCrateReference crateRef = new(Scannable.Barcode);
             HelperMethods.SpawnCrate(crateRef, position);
         }
 
         private void PatchSpawngun() {
             foreach (var instance in UnityEngine.Object.FindObjectsOfType<SpawnGun>()) {
-                instance._lastSelectedCrate = (SpawnableCrate)Crate;
-                instance._selectedCrate = (SpawnableCrate)Crate;
+                instance._lastSelectedCrate = (SpawnableCrate)Scannable;
+                instance._selectedCrate = (SpawnableCrate)Scannable;
             }
         }
     }

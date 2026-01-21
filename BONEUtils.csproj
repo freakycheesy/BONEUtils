@@ -549,6 +549,7 @@
 	</PropertyGroup>
 
 	<ItemGroup>
+		<Compile Include="OverrideColor.cs" />
 		<Compile Include="Core.cs" />
 		<Compile Include="Developer\Extensions\CppExtensions.cs" />
 		<Compile Include="Developer\Logger.cs" />
@@ -556,7 +557,7 @@
 		<Compile Include="Developer\Utility.cs" />
 		<Compile Include="Developer\UICore.cs" />
 		<Compile Include="Utils\AssetWarehouseUtil\AssetWarehouseUtility.cs" />
-		<Compile Include="Utils\AssetWarehouseUtil\CratePage.cs" />
+		<Compile Include="Utils\AssetWarehouseUtil\ScannablePage.cs" />
 		<Compile Include="Utils\AssetWarehouseUtil\CratePages\LevelCratePage.cs" />
 		<Compile Include="Utils\AssetWarehouseUtil\CratePages\AvatarCratePage.cs" />
 		<Compile Include="Utils\AssetWarehouseUtil\CratePages\SpawnableCratePage.cs" />

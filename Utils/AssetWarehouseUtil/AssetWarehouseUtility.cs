@@ -25,13 +25,12 @@ namespace BONEUtils.Utils.AssetWarehouseUtil {
         public static string SearchQuery;
 
         private void BoneMenuCreator() {
-            Page = UICore.RootPage.CreatePage("Asset Warehouse", Color.red);
-            Page.CreateFunction("Refresh", Color.green, Refresh);
-            Page.CreateString("Search Query", Color.green, SearchQuery, Search);
+            Page = UICore.UtilitiesPage.CreatePage("Asset Warehouse", OverrideColor.red);
+            Page.CreateFunction("Refresh", OverrideColor.green, Refresh);
+            Page.CreateString("Search Query", OverrideColor.green, SearchQuery, Search);
             FitlerOptions();
             QueryOptions();
-            PalletsPage = Page.CreatePage("Pallets", Color.green, MaxElements);
-            CratesPage = Page.CreatePage("Crates", Color.cyan, MaxElements);
+            PalletsPage = Page.CreatePage("Pallets", OverrideColor.green, MaxElements);
         }
 
         private static void QueryOptions() {
@@ -58,9 +57,9 @@ namespace BONEUtils.Utils.AssetWarehouseUtil {
         }
 
         private static void RemovePallets() {
+            ScannablePage.Instances.Clear();
+            WarehouseData.SelectedPallets.Clear();
             PalletsPage.RemoveAll();
-            CratesPage.RemoveAll();
-            CratePage.CratePages = new List<CratePage>();
         }
 
         public void Search(string query) {
@@ -82,8 +81,8 @@ namespace BONEUtils.Utils.AssetWarehouseUtil {
         }
 
         private static void CreateCratePages() {
-            foreach (var item in WarehouseData.Crates) {
-                CratePage.CreatePage(item);
+            foreach (var item in WarehouseData.SelectedPallets) {
+                ScannablePage.CreatePage(item);
             }
         }
     }
